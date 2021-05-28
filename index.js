@@ -3,32 +3,7 @@ const app = express();
 
 
 
-const pizzas = [
-    {
-        id:1,
-        sabor:"Quatro queijos",
-        categoria:"Salgada",
-        preco: 15.89
-    },
-    {
-        id:2,
-        sabor:"Morango com Nutella",
-        categoria:"doce",
-        preco: 30.00
-    },
-    {
-        id:3,
-        sabor:"Calabresa",
-        categoria:"Salgada",
-        preco: 15.89
-    },
-    {
-        id:4,
-        sabor:"Brócolis",
-        categoria:"Vegetariana",
-        preco: 35.00
-    },
-]
+const pizzas = require('./database/pizzas.json');
 
 
 const listarTodasAsPizzas = () => {
