@@ -59,3 +59,5 @@ const procurarPizzaPeloNome = function (nomePizza) {
   
     return pizzaEncontrada;
   };
+console.log(procurarPizzaPeloNome("Calabresa"))
+  app.listen(3000,() =>console.log("ServerON"))
