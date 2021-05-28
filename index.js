@@ -59,16 +59,23 @@ console.log(listarTodasAsPizzas())
 
 
 /*Criar uma função que recebe o nome da pizza e retorna o objeto dessa pizza.
-Dica: Utilizem o método find*/
+Dica: Utilizem o método find
 const infoPizza = (pizza) => {
     function buscarPizza(sabor) {
         return sabor.sabor === pizza;
     }
     console.log(pizzas.find(buscarPizza));
     }
-infoPizza("Brócolis");
+infoPizza("Brócolis");*/
 
-const procurarPizzaPeloNome = function(nomePizza){
-    const pizzaEncontrada = pizzas.find((pizza) => pizza.sabor===nomePizza)
-    if(!pizzaEncontrada) return `Pizza de ${nomePizza} não encontrada`
-}
+const procurarPizzaPeloNome = function (nomePizza) {
+    const pizzaEncontrada = pizzas.find((pizza) => pizza.sabor === nomePizza);
+  
+    if (!pizzaEncontrada) return `A pizza sabor ${nomePizza} não foi encontrada.`;
+  
+    // return pizzaEncontrada
+    //   ? pizzaEncontrada
+    //   : `A pizza sabor ${sabor} não foi encontrada.`;
+  
+    return pizzaEncontrada;
+  };
