@@ -73,7 +73,7 @@ Importante: a Nova pizza precisa ter ID*/
 
 app.post('/pizzas', (req,res) =>{
     const {sabor, categoria, preco} = req.body;
-    const id = pizzas.length;
+    const id = pizzas[pizzas.length -1].id + 1;
 
     const novaPizza = {
         id,
