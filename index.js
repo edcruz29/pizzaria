@@ -63,6 +63,9 @@ console.log(procurarPizzaPeloNome("Calabresa"))
 
 
 
+
+app.use(express.json());
+
 app.get('/pizzas',(req,res) =>{
     return res.json(pizzas);
 })
