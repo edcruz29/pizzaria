@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 
-
+app.use(express.json());
 
 const pizzas = require('./database/pizzas.json');
 
@@ -21,7 +21,7 @@ const listarTodasAsPizzas = () => {
 }
 console.log(listarTodasAsPizzas())
 
-
+/*
 const adicionarPizza = function (sabor,categoria,preco){
 
     const pizzaNova = {
@@ -64,13 +64,25 @@ console.log(procurarPizzaPeloNome("Calabresa"))
 
 
 
-app.use(express.json());
+
 
 app.get('/pizzas',(req,res) => res.json(pizzas));
 /*Criar rota para criar uma nova pizza, utilizem o método http correto
 Adicionem no array de pizzas e retorne essa nova pizza como json.
 Importante: a Nova pizza precisa ter ID*/
 
+app.post('/pizzas', (req,res) =>{
+    const {sabor, categoria, preco} = req.body;
+    const id = pizzas.length;
 
+    const novaPizza = {
+        id,
+        sabor,
+        categoria,
+        preco
+    };
+    pizzas.push(novaPizza)
+    res.status(201).json(novaPizza).send();
+})
 
   app.listen(3000,() =>console.log("ServerON"))
