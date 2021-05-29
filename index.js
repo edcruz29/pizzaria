@@ -66,10 +66,10 @@ console.log(procurarPizzaPeloNome("Calabresa"))
 
 app.use(express.json());
 
-app.get('/pizzas',(req,res) =>{
-    return res.json(pizzas);
-})
-
+app.get('/pizzas',(req,res) => res.json(pizzas));
+/*Criar rota para criar uma nova pizza, utilizem o método http correto
+Adicionem no array de pizzas e retorne essa nova pizza como json.
+Importante: a Nova pizza precisa ter ID*/
 
 
 
