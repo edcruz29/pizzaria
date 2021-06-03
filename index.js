@@ -1,11 +1,12 @@
 const express = require("express");
 const app = express();
-
+const fs = require("fs");
+const { v4: uuidv4 } = require("uuid")
 app.use(express.json());
 
 const pizzas = require('./database/pizzas.json');
 
-
+/*
 const listarTodasAsPizzas = () => {
     let conteudo = "";
 
@@ -48,7 +49,7 @@ const infoPizza = (pizza) => {
     }
 infoPizza("Brócolis");*/
 
-const procurarPizzaPeloNome = function (nomePizza) {
+/*const procurarPizzaPeloNome = function (nomePizza) {
     const pizzaEncontrada = pizzas.find((pizza) => pizza.sabor === nomePizza);
   
     if (!pizzaEncontrada) return `A pizza sabor ${nomePizza} não foi encontrada.`;
@@ -59,12 +60,7 @@ const procurarPizzaPeloNome = function (nomePizza) {
   
     return pizzaEncontrada;
   };
-console.log(procurarPizzaPeloNome("Calabresa"))
-
-
-
-
-
+console.log(procurarPizzaPeloNome("Calabresa"))*/
 
 app.get('/pizzas',(req,res) => res.json(pizzas));
 /*Criar rota para criar uma nova pizza, utilizem o método http correto
@@ -73,16 +69,34 @@ Importante: a Nova pizza precisa ter ID*/
 
 app.post('/pizzas', (req,res) =>{
     const {sabor, categoria, preco} = req.body;
-    const id = pizzas[pizzas.length -1].id + 1;
+    
 
     const novaPizza = {
-        id,
+        id: uuidv4(),
         sabor,
         categoria,
         preco
     };
     pizzas.push(novaPizza)
+    fs.writeFileSync("./database/pizzas.json", JSON.stringify(pizzas));
     res.status(201).json(novaPizza).send();
 })
+
+app.put('/pizzas/:id', (req,res) =>{
+    const {id} = req.params;
+    const {sabor, categoria, preco} = req.body;
+    const pizzaEncontrada = pizzas.find(pizza => pizza.id === id)
+
+    if(!pizzaEncontrada){
+        return res.status(400).json({mensagem:"Pizza não encontrada"})
+    }
+    pizzaEncontrada.sabor = sabor;
+    pizzaEncontrada.categoria = categoria;
+    pizzaEncontrada.preco = preco
+
+    fs.writeFileSync("./database/pizzas.json", JSON.stringify(pizzas));
+    return res.json(pizzaEncontrada)
+})
+
 
   app.listen(3000,() =>console.log("ServerON"))
