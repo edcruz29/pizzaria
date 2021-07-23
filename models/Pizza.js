@@ -11,7 +11,9 @@ const PizzaModel = {
     pizzas.push(pizza);
     fs.writeFileSync("./database/pizzas.json", JSON.stringify(pizzas));
   },
-  update:(pizzaEncontrada,sabor,categoria,preco)=>{
+  update:(id,{sabor,categoria,preco})=>{
+
+    const pizzaEncontrada = PizzaModel.findById(id);
   
     pizzaEncontrada.sabor = sabor;
     pizzaEncontrada.categoria = categoria;
@@ -21,8 +23,7 @@ const PizzaModel = {
   },
   destroy:(id)=>{
     const newPizzas = pizzas.filter((pizza) => pizza.id !== id);
-    pizzas.splice(newPizzas,1);
-     fs.writeFileSync("./database/pizzas.json", JSON.stringify(newPizzas));
+     return fs.writeFileSync("./database/pizzas.json", JSON.stringify(newPizzas));
   }
 };
 

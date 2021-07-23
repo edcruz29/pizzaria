@@ -1,0 +1,12 @@
+  
+<div>
+    <hr>
+    <h2><%= pizza.sabor %></h2>
+    <p><%= pizza.categoria %></p>
+    <p><%= pizza.preco %></p>
+    <button><a href="/pizzas/editar/<%= pizza.id %>">Editar</a></button>
+    
+    <form action="/pizzas/<%= pizza.id %>?_method=DELETE" method="POST">
+      <button type="submit">Deletar</button>
+    </form>
+  </div> 

@@ -4,8 +4,7 @@ const PizzaModel = require("../models/Pizza");
 const PizzaController = {
   listar: (req, res) => {
     const pizzas = PizzaModel.findAll();
-    res.json(pizzas);
-    //res.render("pizzas", { pizzas });
+    res.render("pizzas", { pizzas, title:"Homepage" });
   },
   buscar:(req,res) =>{
     const { id } = req.params;
@@ -20,36 +19,31 @@ const PizzaController = {
       sabor,
       categoria,
       deleted: false,
-      preco,
+      preco: Number(preco),
     };
 
     PizzaModel.create(pizzaNova);
 
-    res.status(201).json(pizzaNova);
+    res.status(201).redirect("/pizzas")
   },
   editarUmaPizza: (req, res) => {
     const { id } = req.params;
     const { sabor, categoria, preco } = req.body;
-    const pizzaEncontrada = PizzaModel.findById(id);
 
-    if (!pizzaEncontrada) {
-      return res.status(400).json({ mensagem: "Pizza não encontrada" });
-    }
+    PizzaModel.update(id,{
+      sabor,
+      categoria,
+      preco,
+    });
+   
 
-    pizzaEncontrada.sabor = sabor;
-    pizzaEncontrada.categoria = categoria;
-    pizzaEncontrada.preco = preco;
-
-    PizzaModel.update(pizzaEncontrada);
-
-    return res.json(pizzaEncontrada);
+    return res.redirect("/pizzas");
   },
   deletarUmaPizza: (req, res) => {
     const { id } = req.params;
 
  PizzaModel.destroy(id);
-  res.status(204).json();
-  },
+  }
 };
 
 module.exports = PizzaController;

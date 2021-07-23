@@ -1,1 +1,23 @@
-[{"id":"66bf3e4e-0421-4c79-8de0-c27014c86225","sabor":"Quatro queijos","categoria":"Salgada","deleted":false,"preco":15.89},{"id":"92fa6c9e-f9a5-4404-aa35-0c09ea9d6b8c","sabor":"Morango com Nutella","categoria":"Doce","deleted":false,"preco":30},{"id":"952fb814-4e15-4751-acb8-b6b2eceafd46","sabor":"Mussarela","categoria":"Salgado","deleted":false,"preco":20},{"id":"9f404d8b-e609-4736-8933-09aec0f5eb88","sabor":"Lombo canadense","categoria":"Salgada","deleted":false,"preco":25},{"id":"68b6d112-cdcb-4d14-8216-3611a51ebd31","deleted":false,"preco":39.9,"sabor":"Brocólis com Catupiry","categoria":"Salgada"},{"id":"1ab100cf-6cfb-45f0-adab-0893c3d787c3","sabor":"Portuguesa","categoria":"Salgada","deleted":false,"preco":25.9},{"id":"cacfacc4-2129-496a-a15e-337220f334ad","sabor":"Portuguesa","categoria":"Salgada","deleted":false,"preco":25.9}]
+[
+  {
+    "id": "6a93e86a-6e87-4b9b-8f3e-82e98ed4452d",
+    "sabor": "Calabresa",
+    "categoria": "Salgada",
+    "deleted": false,
+    "preco": "22"
+  },
+  {
+    "id": "bdcdc1a3-f1ce-454d-b5ad-0982d669e33d",
+    "sabor": "Morango com Nutella",
+    "categoria": "Doce",
+    "deleted": false,
+    "preco": 32.9
+  },
+  {
+    "id": "17609cde-f992-43a7-ac3e-9398b859ed53",
+    "sabor": "Lombo canadense",
+    "categoria": "Salgada",
+    "deleted": false,
+    "preco": 32.9
+  }
+]
